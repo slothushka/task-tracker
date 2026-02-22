@@ -1,119 +1,193 @@
-# ✅ Task Tracker
+# ✅ Task Tracker A full-stack task management application built with a **Node.js REST API** and a **Next.js** web frontend. Features JWT authentication, Redis caching, and MongoDB persistence.
 
-A full-stack task management application built with a **Node.js REST API** and a **Next.js** web frontend. Features JWT authentication, Redis caching, and MongoDB persistence.
 
 ## 📁 Project Structure
 
 ```
 task-tracker/
-├── backend/      → REST API (Express + Mongoose + Redis)
-└── frontend/     → Web UI (Next.js)
+├── backend/      # REST API (Express + Mongoose + Redis)
+└── frontend/     # Web UI (Next.js)
 ```
+
+---
+
+## 🧰 Tech Stack
+
+### Backend
+
+* Node.js 20
+* Express
+* MongoDB + Mongoose
+* Redis
+* JWT Authentication
+* Jest (Testing)
+
+### Frontend
+
+* Next.js
+* React
+* Environment-based configuration
 
 ---
 
 ## ⚙️ Prerequisites
 
-Make sure these are installed before you begin:
+Make sure you have the following installed:
 
-- [Node.js 20 LTS](https://nodejs.org)
-- [MongoDB](https://www.mongodb.com/docs/manual/installation/) — local 
-- [Redis](https://redis.io/docs/install/) — local install
+* [Node.js 20 LTS](https://nodejs.org)
+* [MongoDB (Local Installation)](https://www.mongodb.com/docs/manual/installation/)
+* [Redis (Local Installation)](https://redis.io/docs/install/)
 
+---
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
-### 1 · Backend
+## 1️⃣ Backend Setup
 
-# Navigate to the backend folder
+Open a terminal:
+
+```bash
+# Navigate to backend
 cd backend
 
 # Install dependencies
 npm install
+```
 
-# Create your environment file
-copy .env.example .env        # Windows
+### Create Environment File
 
-Open `.env` and fill in the two required values:
+```bash
+# Windows
+copy .env.example .env
+```
+
+Edit the `.env` file:
 
 ```env
-# Local MongoDB connection
+# MongoDB connection
 MONGODB_URI=mongodb://localhost:27017/task-tracker
 
-# Generate a secure secret and paste it here:
+# Generate a secure JWT secret:
 # node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 JWT_SECRET=your_generated_secret_here
 ```
 
-Start the development server:
-npm run dev
+### Start Backend Server
 
-✅ The server is ready when you see:
+```bash
+npm run dev
+```
+
+✅ You should see:
 
 ```
 ✅ MongoDB connected
 ✅ Redis connected
 🚀 Server running on http://localhost:4000
 ```
-### 2 · Frontend
 
-Open a **second terminal** and run:
+---
 
-# Navigate to the frontend folder
+## 2️⃣ Frontend Setup
+
+Open a **second terminal**:
+
+```bash
+# Navigate to frontend
 cd frontend
 
 # Install dependencies
 npm install
+```
 
-# Create your environment file
-copy .env.local.example .env.local        # Windows
+### Create Environment File
 
-The `.env.local` file already points to your local backend and needs no changes:
+```bash
+# Windows
+copy .env.local.example .env.local
+```
+
+`.env.local` (no changes required):
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
 
-Start the frontend:
+### Start Frontend
+
+```bash
 npm run dev
+```
+
+Frontend runs on:
+
+```
+http://localhost:3000
+```
 
 ---
 
-## 🧪 Running Tests
+# 🧪 Running Tests
 
+Navigate to backend:
+
+```bash
 cd backend
+```
 
-# Run all tests
+### Run Tests
+
+```bash
 npm test
+```
 
-# Run with coverage report (target: 70%+)
+### Run With Coverage (Target: 70%+)
+
+```bash
 npm run test:coverage
 ```
 
-Tests run fully in-memory — no external MongoDB or Redis required.  
-Uses `mongodb-memory-server` and `ioredis-mock`.
+✅ Tests run fully **in-memory**
+No external MongoDB or Redis required.
+
+Uses:
+
+* `mongodb-memory-server`
+* `ioredis-mock`
 
 ---
 
-## 🔐 Environment Variables
+# 🔐 Environment Variables
 
-### Backend — `.env`
+## Backend — `.env`
 
-| Variable | Required | Description |
-|---|---|---|
-| `PORT` | No | Server port (default: `4000`) |
-| `MONGODB_URI` | ✅ | MongoDB connection string |
-| `JWT_SECRET` | ✅ | Secret for signing JWTs (32+ chars) |
-| `JWT_EXPIRES_IN` | No | Token lifetime (default: `7d`) |
-| `REDIS_HOST` | No | Redis host (default: `localhost`) |
-| `REDIS_PORT` | No | Redis port (default: `6379`) |
-| `FRONTEND_URL` | No | Allowed CORS origin (default: `http://localhost:3000`) |
+| Variable         | Required | Default                 | Description                                     |
+| ---------------- | -------- | ----------------------- | ----------------------------------------------- |
+| `PORT`           | ❌        | `4000`                  | Server port                                     |
+| `MONGODB_URI`    | ✅        | —                       | MongoDB connection string                       |
+| `JWT_SECRET`     | ✅        | —                       | Secret for signing JWTs (32+ chars recommended) |
+| `JWT_EXPIRES_IN` | ❌        | `7d`                    | Token lifetime                                  |
+| `REDIS_HOST`     | ❌        | `localhost`             | Redis host                                      |
+| `REDIS_PORT`     | ❌        | `6379`                  | Redis port                                      |
+| `FRONTEND_URL`   | ❌        | `http://localhost:3000` | Allowed CORS origin                             |
 
-### Frontend — `.env.local`
+---
 
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_API_URL` | ✅ | Backend API base URL |
+## Frontend — `.env.local`
+
+| Variable              | Required | Description          |
+| --------------------- | -------- | -------------------- |
+| `NEXT_PUBLIC_API_URL` | ✅        | Backend API base URL |
+
+---
+
+# 🛡️ Authentication Flow
+
+1. User signs up → Password is hashed
+2. User logs in → JWT is generated
+3. JWT is sent in `Authorization` header
+4. Protected routes verify token
+5. Redis caches frequently accessed data
 
 ---
 
