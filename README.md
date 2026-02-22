@@ -1,4 +1,5 @@
-# ✅ Task Tracker A full-stack task management application built with a **Node.js REST API** and a **Next.js** web frontend. Features JWT authentication, Redis caching, and MongoDB persistence.
+# ✅ Task Tracker 
+A full-stack task management application built with a **Node.js REST API** and a **Next.js** web frontend. Features JWT authentication, Redis caching, and MongoDB persistence.
 
 
 ## 📁 Project Structure
