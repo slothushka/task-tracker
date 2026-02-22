@@ -1,0 +1,50 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/login/auth.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+.auth_main__gPeQf {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 20px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.auth_header__LbyDd {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth_logo__dZldN {
+  width: 52px;
+  height: 52px;
+  background: var(--accent);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  margin: 0 auto 16px;
+}
+
+.auth_title__VUPHc {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.auth_subtitle__x_ypB {
+  color: var(--text-2);
+  font-size: 14px;
+}
+
+.auth_switchLink__ACHPL {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-2);
+  font-size: 14px;
+}
+
